@@ -1,0 +1,295 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title> Autoencoder </title>
+    <link rel="stylesheet" href="./revealjs/css/reveal.css">
+    <link rel="stylesheet" href="./revealjs/css/theme/white.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style media="screen">
+      .title{
+        text-align: justify;
+      }
+  
+      .title-slide{
+        text-transform: none !important;
+      }
+
+      .panel{
+        background-color: rgb(228, 228, 237);
+        padding: 20px !important;
+        border-radius: 10px;
+      }
+
+      .style-image{
+        border-style: none !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
+        box-shadow: -2px 5px 20px #333 !important;
+      }
+
+      .subtitle{
+        padding-left: 15px !important;
+        border-left: 2px black solid !important;
+      }
+      
+      .box-blockquote{
+        text-align: justify !important;
+        padding-left: 5% !important;
+        margin-bottom: 5% !important;
+      }
+
+      .title-blockquote{
+        font-size: 30pt !important;
+        text-transform: none !important;
+        color: rgba(0, 0, 0, 0.8) !important;
+      }
+
+      .blockquote{
+        padding-left: 2% !important; 
+        margin-left: 5%  !important; 
+        border-left: 1px rgba(0, 0, 0, 0.8) solid !important;
+        font-size: 20pt !important;
+        color: rgba(0, 0, 0, 0.6) !important;
+      }
+
+      .blockquote-list{
+        border-left: none !important;
+      }
+      
+      table{
+        font-size: 15pt !important;
+        /* border: 1px solid #ddd !important; */
+        /* width: 100%; */
+      }
+
+      .table th {
+        background-color: rgb(32, 32, 32);
+        color: white;
+      }
+
+      .table tr:hover {background-color:#d6d6d6;}
+      
+      .table td{    
+        border: 1px solid  rgb(32, 32, 32, 0.5) !important;
+        text-align: left !important;
+      }
+
+      .table{
+        box-shadow: -2px 5px 20px #333 !important;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+        <!-- first slide -->
+        <section data-background="ae.png">
+          <div class="title">
+            <h2> Autoencoder </h2>
+             <div class="subtitle">
+               <span > </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- team -->
+        <section>
+          <table style="color:rgb(29, 35, 38); font-size:20pt;">
+            <tr>
+              <td>
+                <div class="panel">
+                  <p><span class="icons">&#xf2b9; </span> João Vítor do Nascimento </p>
+                  <p><span class="icons">&#xf19d; </span> Universidade Federal de Alagoas </p>
+                  <p><span class="icons">&#xf0e0; </span> joao.vitor@arapiraca.ufal.br </p>
+                  <p><span class="icons">&#xf09b; </span> <a href="https://www.github.com/vitornascimentto"> vitornascimentto </a></p>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </section>
+
+        <section>
+          <h3> Introdução </h3>
+          <div class="blockquote">
+            <ul>
+              <li> Rede Neural </li>
+              <li> Redução de Dimensionalidade </li>
+              <li> Aprender uma representação (Código) </li>
+              <li> Reconstrução </li>
+            </ul>
+          </div>  
+        </section>
+
+        <section>
+          <h3> Duas etapas </h3>
+          <div class="blockquote">
+            <ul> 
+              <li> Compactar dados de entrada </li>
+              <li> Descompactar em algo que corresponda de maneira próxima aos dados originais </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <img data-src="autoencoders.png" style="border-color: white;">
+        </section>
+
+
+
+        <section>
+          <h3> Codificador e Decodificador </h3>
+
+          <div>
+            <img data-src="1.png" style="border-color: white;">
+          </div>
+          <div>
+            <img data-src="2.png" style="border-color: white;">
+          </div>
+          <div>
+            <img data-src="3.png" style="border-color: white;">
+          </div>
+
+          <div class="blockquote">
+            <p> w -> Matriz de peso; b -> vetor </p>
+          </div>
+        </section>
+
+        <section>  
+          <h3> Denoising autoencoder </h3>
+          <div class="blockquote"> 
+            <ul>
+              <li> Entrada corrompida </li>
+              <li> Recuperar a entrada original sem distorção (Boa representação) </li>
+            </ul>
+          </div>
+        </section>
+
+        <section> 
+          <h3> Treino </h3>
+          <div class="blockquote">
+            <ul>
+              <li>
+                Para cada entrada X 
+                <ul> 
+                  <li> Passe de feed-forward para computar ativações em todas as camadas ocultas </li>  
+                  <li> Em seguida, na camada de saída para obter a saída x' </li>
+                  <li> Desvio de x' da entrada x 
+                    <ul>
+                      <li> Tipicamente usando erro quadrado </li>
+                    </ul>
+                  </li>
+                  <li> Back propagation </li>
+                </ul>   
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3> Variantes de retropropagação </h3>
+          <div class="blockquote">
+            <ul>
+              <li> Método do gradiente conjugado </li>
+              <li> Descida mais acentuada </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <section>
+            <h3> Problemas </h3>
+          </section>
+          
+          <section>
+            <div class="blockquote">
+              <ul>
+                <li> Reconstruir a média de todos os dados de treinamento (quase sempre) </li>
+                <li> 
+                  Solução 
+                  <ul>
+                    <li> 
+                      Usar pesos iniciais que se aproximam da solução final 
+                      <ul>
+                        <li> Pré-treinamento </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <div class="blockquote">  
+              <ul>
+                <li> 
+                  Camadas ocultas maiores que a camada de entrada
+                  <ul>
+                    <li> 
+                      Autoencoder aprende a função identidade 
+                      <ul>
+                        <li> Se torna inútil </li>
+                        <li> Estudos mostram que se aprende em casos como esse </li>
+                      </ul>
+                    </li>
+                  </ul>    
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          
+          <section>
+            <h3> Usos </h3>
+          </section>
+
+          <section>
+            <div class="blockquote">
+              A deep learning framework for financial time series using stacked autoencoders and long-short term memory
+            </div>  
+          </section>
+
+        </section>
+
+        <section> 
+          <div>
+            Dúvidas?
+          </div>
+          <div>
+            <img data-src="thanks.gif" style="border-color: white;"> 
+          </div>
+          <div>
+            =)
+          </div>
+        </section>
+
+        <!-- biography  -->
+        <!-- <section>
+            <section>
+                <h2 class="title-slide">Bibliografia</h2>
+            </section>
+        </section> -->
+      </div>
+    </div>
+
+    <script src="./revealjs/lib/js/head.min.js"></script>
+    <script src="./revealjs/js/reveal.js"></script>
+    <script type="text/javascript">
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        transition: 'slide'
+      })
+    </script>
+  </body>
+
+
+</html>
